@@ -1,0 +1,165 @@
+name: EcoChatMQTT
+main: jp.minecraftuser.ecochatmqtt.EcoChatMQTT
+version: ${project.version}
+api-version: 1.18
+depend: [EcoFramework, EcoMQTT]
+softdepend: [EcoMQTTServerLog]
+commands:
+  ecms:
+    description: EcoChatMQTT commands
+    usage: /eccm
+    permission: ecochatmqtt
+  ecms reload:
+    description: reload config.yml
+    usage: /eccm reload
+    permission: ecochatmqtt.reload
+  add:
+    description: cmd
+    usage: /add
+    permission: ecochatmqtt.chat.add
+  channel:
+    description: cmd
+    usage: /channel
+    permission: ecochatmqtt.chat.channel
+  channel name:
+    description: cmd
+    usage: /channel name
+    permission: ecochatmqtt.chat.channel.name
+  channel type:
+    description: cmd
+    usage: /channel type
+    permission: ecochatmqtt.chat.channel.type
+  channel color:
+    description: cmd
+    usage: /channel color
+    permission: ecochatmqtt.chat.channel.color
+  channel def:
+    description: cmd
+    usage: /channel def
+    permission: ecochatmqtt.chat.channel.def
+  channel list:
+    description: cmd
+    usage: /channel list
+    permission: ecochatmqtt.chat.channel.list
+  channel passenable:
+    description: cmd
+    usage: /channel passenable
+    permission: ecochatmqtt.chat.channel.passenable
+  channel join:
+    description: cmd
+    usage: /channel join
+    permission: ecochatmqtt.chat.channel.join
+  channel leave:
+    description: cmd
+    usage: /channel leave
+    permission: ecochatmqtt.chat.channel.leave
+  channel welcome:
+    description: cmd
+    usage: /channel welcome
+    permission: ecochatmqtt.chat.channel.welcome
+  channel goodbye:
+    description: cmd
+    usage: /channel goodbye
+    permission: ecochatmqtt.chat.channel.goodbye
+  channel owner:
+    description: cmd
+    usage: /channel owner
+    permission: ecochatmqtt.chat.channel.owner
+  channel tag:
+    description: cmd
+    usage: /channel tag
+    permission: ecochatmqtt.chat.channel.tag
+  channel perm:
+    description: cmd
+    usage: /channel perm
+    permission: ecochatmqtt.chat.channel.perm
+  conf:
+    description: cmd
+    usage: /conf
+    permission: ecochatmqtt.chat.conf
+  conf channel:
+    description: cmd
+    usage: /conf channel
+    permission: ecochatmqtt.chat.conf.channel
+  conf player:
+    description: cmd
+    usage: /conf player
+    permission: ecochatmqtt.chat.conf.player
+  conf ngplayer:
+    description: cmd
+    usage: /conf ngplayer
+    permission: ecochatmqtt.chat.conf.ngplayer
+  conf flag:
+    description: cmd
+    usage: /conf flag
+    permission: ecochatmqtt.chat.conf.flag
+  conf flag info:
+    description: cmd
+    usage: /conf flag info
+    permission: ecochatmqtt.chat.conf.flag.info
+  conf flag nguser:
+    description: cmd
+    usage: /conf flag nguser
+    permission: ecochatmqtt.chat.conf.flag.nguser
+  conf flag range local:
+    description: cmd
+    usage: /conf flag range local
+    permission: ecochatmqtt.chat.conf.flag.range.local
+  conf flag rs:
+    description: cmd
+    usage: /conf flag rs
+    permission: ecochatmqtt.chat.conf.flag.rs
+  conf flag mute:
+    description: cmd
+    usage: /conf flag mute
+    permission: ecochatmqtt.chat.conf.flag.mute
+  delete:
+    description: cmd
+    usage: /delete
+    permission: ecochatmqtt.chat.delete
+  dice:
+    description: cmd
+    usage: /dice
+    permission: ecochatmqtt.chat.dice
+  history:
+    description: cmd
+    usage: /history
+    permission: ecochatmqtt.chat.history
+  join:
+    description: cmd
+    usage: /join
+    permission: ecochatmqtt.chat.join
+  leave:
+    description: cmd
+    usage: /leave
+    permission: ecochatmqtt.chat.leave
+  passjoin:
+    description: cmd
+    usage: /passjoin
+    permission: ecochatmqtt.chat.passjoin
+  pm:
+    description: cmd
+    usage: /pm
+    permission: ecochatmqtt.chat.pm
+  pmhistory:
+    description: cmd
+    usage: /pmhistory
+    permission: ecochatmqtt.chat.pmhistory
+  rs:
+    description: cmd
+    usage: /rs
+    permission: ecochatmqtt.chat.rs
+  set:
+    description: cmd
+    usage: /set
+    permission: ecochatmqtt.chat.set
+  cc:
+    description: cmd
+    usage: /cc
+    permission: ecochatmqtt.chat.cc
+  ecc:
+    description: cmd
+    usage: /ecc
+    permission: ecochatmqtt.chat.ecc
+    
+
