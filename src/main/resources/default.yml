@@ -1,0 +1,47 @@
+
+# List of Type
+# - global: to all worlds
+# - world : to current world
+# - local : to local range
+# Message Format
+#    Replace format
+#      {server} : "Topic.ServerName" defined value.
+#      {plugin} : The name of the plugin you requested to send. 
+# AutoJoin : Join when login the server first time.
+# DisplayChannelList : Add to the list displayed by the /cc list command
+# ReqPerm : Require permission to add other players to the current channel.
+DefaultActive: "G"
+DefaultChannels:
+  G:
+    Name: "General"
+    Type: "global"
+    EnterMessage: "{PLAYER} join the {NAME} channel."
+    LeaveMessage: "{PLAYER} leave the {NAME} channel."
+    WelcomeMessage: "Welcome, {TAG} Channel."
+    GoodbyeMessage: "Goodbye, {TAG} Channel."
+    AutoJoin: true
+    ListEnabled: true
+    AddReqPerm: true
+    Activate: true
+  W:
+    Name: "World"
+    Type: "world"
+    EnterMessage: "{PLAYER} join the {NAME} channel."
+    LeaveMessage: "{PLAYER} leave the {NAME} channel."
+    WelcomeMessage: "Welcome, {TAG} Channel."
+    GoodbyeMessage: "Goodbye, {TAG} Channel."
+    AutoJoin: true
+    ListEnabled: true
+    AddReqPerm: true
+    Activate: true
+  L:
+    Name: "Local"
+    Type: "local"
+    EnterMessage: "{PLAYER} join the {NAME} channel."
+    LeaveMessage: "{PLAYER} leave the {NAME} channel."
+    WelcomeMessage: "Welcome, {TAG} Channel."
+    GoodbyeMessage: "Goodbye, {TAG} Channel."
+    AutoJoin: true
+    ListEnabled: true
+    AddReqPerm: true
+    Activate: true

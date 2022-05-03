@@ -1,0 +1,41 @@
+# Topic Format
+#    Replace format
+#      {server} : "Topic.ServerName" defined value.
+#      {plugin} : The name of the plugin you requested to send. 
+Enabled: false
+
+DateFormat: "yyyy/MM/dd HH:mm:ss.SSS"
+Topic:
+  Chat:
+    Enable: true
+    Format: "{server}/p/{plugin}/chat"
+    URL: ""
+  Config:
+    Enable: true
+    Format: "{server}/p/{plugin}/config"
+    URL: ""
+
+ChannelDefault:
+    Type: "global"
+    EnterMessage: "{PLAYER} join the {NAME} channel."
+    LeaveMessage: "{PLAYER} leave the {NAME} channel."
+    WelcomeMessage: "Welcome, {TAG} Channel."
+    GoodbyeMessage: "Goodbye, {TAG} Channel."
+    AutoJoin: false
+    ListEnabled: false
+    AddReqPerm: false
+    Activate: true
+ 
+Mqtt:
+  Publish:
+    QoS: 1
+  Subscribe:
+    QoS: 1
+
+Database:
+  type: "sqlite"
+  name: "chat.db"
+  server: "localhost:port"
+  user: "user"
+  pass: "pass"
+
