@@ -3,7 +3,6 @@ package jp.minecraftuser.ecochatmqtt.config;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -203,6 +202,7 @@ public class EcoChatMQTTConfig extends ConfigFrame{
             }
         }
         con.commit();
+        con.close();
         log.log(Level.INFO, "Loading database complete.");
     }
 
