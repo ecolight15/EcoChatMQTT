@@ -313,7 +313,7 @@ public class EcoChatMQTTConfig extends ConfigFrame{
     public ChannelUser getChannelUser(UUID uuid, String ch) {
         if (map_chuser_us.containsKey(uuid)) {
             if (map_chuser_us.get(uuid).containsKey(ch.toLowerCase())) {
-                return map_chuser_us.get(uuid).get(ch);
+                return map_chuser_us.get(uuid).get(ch.toLowerCase());
             }
         }
         return null;
