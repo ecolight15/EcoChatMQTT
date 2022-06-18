@@ -240,7 +240,6 @@ public class AsyncChatTaskChatReceive extends AsyncChatTaskBase {
                     sb.insert(0, "(+");
                 }
             }
-            log.info("sendMessage:" + sb.toString());
             pl.sendMessage(sb.toString());
         }
         data.result = true;
@@ -255,7 +254,7 @@ public class AsyncChatTaskChatReceive extends AsyncChatTaskBase {
      */
     @Override
     public void mainThread(AsyncWorker thread, ChatPayload data) {
-        log.info("returnd main therad = " + (System.nanoTime() - startTime) / 1000000);
+        log.info("return main therad = " + (System.nanoTime() - startTime) / 1000000);
     }
 
 }
