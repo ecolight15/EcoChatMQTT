@@ -57,7 +57,7 @@ public class AsyncChatTaskCmdConfFlagRS extends AsyncChatTaskBase {
         boolean old = us.rsWarn;
         us.rsWarn = !us.rsWarn;
         usdb.updateUser(con, us);
-        Utl.sendPluginMessage(plg, data.player, "rsWarn設定を{1}から{2}に変更しました。", String.valueOf(old), String.valueOf(us.rsWarn));
+        Utl.sendPluginMessage(plg, data.player, "rsWarn設定を{0}から{1}に変更しました。", String.valueOf(old), String.valueOf(us.rsWarn));
 
         // 他サーバに対ユーザーNG設定変更を通知する
         notifyConfigReload(ConfigJson.Type.USER, us.id, 0, 0);

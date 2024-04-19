@@ -57,7 +57,7 @@ public class AsyncChatTaskCmdConfFlagRange extends AsyncChatTaskBase {
         boolean old = us.infoNotifyCount;
         us.infoNotifyCount = !us.infoNotifyCount;
         usdb.updateUser(con, us);
-        Utl.sendPluginMessage(plg, data.player, "infoNotifyCount設定を{1}から{2}に変更しました。", String.valueOf(old), String.valueOf(us.infoNotifyCount));
+        Utl.sendPluginMessage(plg, data.player, "infoNotifyCount設定を{0}から{1}に変更しました。", String.valueOf(old), String.valueOf(us.infoNotifyCount));
 
         // 他サーバに対ユーザーNG設定変更を通知する
         notifyConfigReload(ConfigJson.Type.USER, us.id, 0, 0);
