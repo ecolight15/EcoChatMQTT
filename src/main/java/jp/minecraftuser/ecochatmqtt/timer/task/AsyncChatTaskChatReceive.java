@@ -73,10 +73,18 @@ public class AsyncChatTaskChatReceive extends AsyncChatTaskBase {
         log.info("receive json tag:"+json.msg);
         // 送信ユーザー情報の取得
         User sender = conf.getUser(json.player.uuid);
+        if (sender == null) {
+            log.warning("sender is null:" + json.player.uuid);
+            return;
+        }
         
         // チャンネル情報の取得
         Channel ch = conf.getChannel(json.channel);
-        
+        if (ch == null) {
+            log.warning("ch is null:" + json.channel);
+            return;
+        }
+    
         // 送信ユーザーの選定
         HashMap<Player, StringBuilder> sendList = new HashMap<>();
         for (Player opl : plg.getServer().getOnlinePlayers()) {
