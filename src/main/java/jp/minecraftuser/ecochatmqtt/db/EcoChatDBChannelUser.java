@@ -90,6 +90,36 @@ public class EcoChatDBChannelUser extends DatabaseFrame {
     }
 
     /**
+     * 特定チャンネルの全ユーザー情報取得
+     * @param con コネクション
+     * @param chid チャンネルID
+     * @return 全ユーザーNGリスト
+     * @throws SQLException SQL異常
+     */
+    public ConcurrentHashMap<Integer, ChannelUser> loadChannelUsers(Connection con, Integer chid) throws SQLException {
+        ConcurrentHashMap<Integer, ChannelUser> ret = new ConcurrentHashMap<>();
+        
+        PreparedStatement prep = null;
+        ResultSet rs = null;
+        prep = con.prepareStatement("SELECT * FROM CHUSERS WHERE ID = ?;");
+        prep.setInt(1, chid);
+        rs = prep.executeQuery();
+        while (rs.next()) {
+            ChannelUser chus = new ChannelUser(
+                    rs.getInt("ID"),
+                    rs.getInt("USERID"),
+                    rs.getBoolean("OWNER"),
+                    rs.getLong("JOINDATE")
+            );
+            ret.put(chus.id, chus);
+        }
+        rs.close();
+        prep.close();
+
+        return ret;
+    }
+
+    /**
      * 特定チャンネルのOwnerユーザー情報取得
      * @param con コネクション
      * @param chid チャンネルID

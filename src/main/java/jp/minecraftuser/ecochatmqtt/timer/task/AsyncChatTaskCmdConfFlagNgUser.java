@@ -57,7 +57,7 @@ public class AsyncChatTaskCmdConfFlagNgUser extends AsyncChatTaskBase {
         boolean old = us.showNGUser;
         us.showNGUser = !us.showNGUser;
         usdb.updateUser(con, us);
-        Utl.sendPluginMessage(plg, data.player, "showNGUser設定を{1}から{2}に変更しました。", String.valueOf(old), String.valueOf(us.showNGUser));
+        Utl.sendPluginMessage(plg, data.player, "showNGUser設定を{0}から{1}に変更しました。", String.valueOf(old), String.valueOf(us.showNGUser));
 
         // 他サーバに対ユーザーNG設定変更を通知する
         notifyConfigReload(ConfigJson.Type.USER, us.id, 0, 0);

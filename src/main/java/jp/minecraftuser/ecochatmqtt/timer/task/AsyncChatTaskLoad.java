@@ -75,18 +75,27 @@ public class AsyncChatTaskLoad extends AsyncChatTaskBase {
             if (!conf.isExistUser(pl)) {
                 log.log(Level.INFO, "Create new user data. player[{0}] active[{1}]", new Object[]{data.player.getName(), conf.getChannel(active).tag});
                 // ユーザ情報を追加
-                usdb.insertUser(con, pl, conf.getChannel(active).id);
-                con.commit();
+                try {
+                    // 既に情報がある場合は、データの重複でcatchへ飛ぶ。事前チェックは省略。
+                    usdb.insertUser(con, pl, conf.getChannel(active).id);
+                    con.commit();
+ 
+                    // DBからユーザ情報を読み直す
+                    log.log(Level.INFO, "Reload new user data.");
+                    data.user = usdb.reloadUser(con, pl.getUniqueId());
 
-                // DBからユーザ情報を読み直す
-                log.log(Level.INFO, "Reload new user data.");
-                data.user = usdb.reloadUser(con, pl.getUniqueId());
+                    // 初期チャンネルへの加入
+                    log.log(Level.INFO, "Join new user default channels.");
+                    ConcurrentHashMap<Integer, Channel> auto = chdb.loadAutoJoinChanels(con);
+                    for (int chid : auto.keySet()) {
+                        chusdb.insertChannelUser(con, chid, data.user.id);
+                    }
+                } catch (SQLException ex) {
+                    // 重複以外で異常となる可能性もあるため念のためログ
+                    log.log(Level.INFO, "Skip create new user data. cause...");
+                    Logger.getLogger(AsyncChatTaskLoad.class.getName()).log(Level.INFO, null, ex);
 
-                // 初期チャンネルへの加入
-                log.log(Level.INFO, "Join new user default channels.");
-                ConcurrentHashMap<Integer, Channel> auto = chdb.loadAutoJoinChanels(con);
-                for (int chid : auto.keySet()) {
-                    chusdb.insertChannelUser(con, chid, data.user.id);
+                    data.user = usdb.reloadUser(con, pl.getUniqueId());
                 }
             } else {
                 data.user = usdb.reloadUser(con, pl.getUniqueId());

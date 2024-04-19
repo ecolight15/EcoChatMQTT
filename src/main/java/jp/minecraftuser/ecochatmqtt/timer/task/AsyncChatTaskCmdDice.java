@@ -64,7 +64,9 @@ public class AsyncChatTaskCmdDice extends AsyncChatTaskBase {
             int i = Integer.parseInt(data.param[0]);
             if (i < 1) {
                 Utl.sendPluginMessage(plg, data.player, "サイコロの目の指定が小さすぎます");
-            }
+                data.result = false;
+                return;
+                }
             String str = String.format("%s が %d 面サイコロを転がしました。コロコロ...[%d]", data.player.getName(), i, r.nextInt(i)+1);
             act.sendChannelBroadcast(plg, data.player, str);
         }

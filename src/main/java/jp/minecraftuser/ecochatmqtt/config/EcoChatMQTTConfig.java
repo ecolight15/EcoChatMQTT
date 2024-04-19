@@ -3,7 +3,6 @@ package jp.minecraftuser.ecochatmqtt.config;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -203,6 +202,7 @@ public class EcoChatMQTTConfig extends ConfigFrame{
             }
         }
         con.commit();
+        con.close();
         log.log(Level.INFO, "Loading database complete.");
     }
 
@@ -313,7 +313,7 @@ public class EcoChatMQTTConfig extends ConfigFrame{
     public ChannelUser getChannelUser(UUID uuid, String ch) {
         if (map_chuser_us.containsKey(uuid)) {
             if (map_chuser_us.get(uuid).containsKey(ch.toLowerCase())) {
-                return map_chuser_us.get(uuid).get(ch);
+                return map_chuser_us.get(uuid).get(ch.toLowerCase());
             }
         }
         return null;

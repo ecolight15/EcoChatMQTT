@@ -17,6 +17,8 @@ import jp.minecraftuser.ecochatmqtt.timer.AsyncWorker;
 import jp.minecraftuser.ecochatmqtt.timer.ChatPayload;
 import jp.minecraftuser.ecoframework.PluginFrame;
 import jp.minecraftuser.ecoframework.Utl;
+import jp.minecraftuser.ecomqttserverlog.EcoMQTTServerLog;
+
 import org.bukkit.entity.Player;
 
 /**
@@ -84,17 +86,17 @@ public class AsyncChatTaskCmdInfo extends AsyncChatTaskBase {
         for (ChannelUser owner : owners.values()) {
             if (!first) sb.append(",");
             else first = false;
-            String name = null;
             if (((EcoChatMQTT) plg).slog == null) {
-                if (((EcoChatMQTT) plg).slog != null) {
-                    sb.append(((EcoChatMQTT) plg).slog.latestName(conf.getUser(owner.userid).uuid));
-                }
+                ((EcoChatMQTT) plg).slog = (EcoMQTTServerLog) plg.getPluginFrame("EcoMQTTServerLog");
+            }
+            if (((EcoChatMQTT) plg).slog != null) {
+                sb.append(((EcoChatMQTT) plg).slog.latestName(conf.getUser(owner.userid).uuid));
             }
         }
-        
+
         // 出力
-        ch.sendChannelMessage(plg, data.player, "============ ["+ch.tag+":"+ch.name+"]チャンネル情報 =============");
-        ch.sendChannelMessage(plg, data.player, "管理者グループ:");
+        ch.sendChannelMessage(plg, data.player, "=== ["+ch.tag+":"+ch.name+"]チャンネル情報 ===");
+        ch.sendChannelMessage(plg, data.player, "管理者グループ:" + sb.toString());
         SimpleDateFormat sdf = new SimpleDateFormat("[YYYY-MM-dd HH:mm:ss] ");
         ch.sendChannelMessage(plg, data.player, "作成日:"+sdf.format(date));
         ch.sendChannelMessage(plg, data.player, "チャットタイプ:"+ch.type.getName());
