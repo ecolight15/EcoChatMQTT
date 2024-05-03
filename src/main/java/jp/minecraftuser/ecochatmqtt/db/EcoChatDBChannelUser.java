@@ -111,7 +111,7 @@ public class EcoChatDBChannelUser extends DatabaseFrame {
                     rs.getBoolean("OWNER"),
                     rs.getLong("JOINDATE")
             );
-            ret.put(chus.id, chus);
+            ret.put(chus.userid, chus);
         }
         rs.close();
         prep.close();
@@ -141,7 +141,7 @@ public class EcoChatDBChannelUser extends DatabaseFrame {
                     rs.getBoolean("OWNER"),
                     rs.getLong("JOINDATE")
             );
-            ret.put(chus.id, chus);
+            ret.put(chus.userid, chus);
         }
         rs.close();
         prep.close();
