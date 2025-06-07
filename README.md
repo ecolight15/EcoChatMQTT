@@ -1,64 +1,64 @@
 # EcoChatMQTT
 
-EcoChatMQTT is a Minecraft plugin that provides advanced chat functionality with cross-server communication using MQTT protocol. It allows multiple Minecraft servers to share chat messages, private messages, and other chat-related data in real-time.
+EcoChatMQTTは、MQTTプロトコルを使用してサーバー間通信機能を提供する高度なチャット機能を持つMinecraftプラグインです。複数のMinecraftサーバー間でチャットメッセージ、プライベートメッセージ、その他のチャット関連データをリアルタイムで共有することができます。
 
-## Features
+## 機能
 
-### Core Chat System
-- **Cross-server chat**: Communication between multiple Minecraft servers via MQTT
-- **Channel system**: Support for multiple chat channels (Global, World, Local)
-- **Private messaging**: Direct player-to-player messaging across servers
-- **Chat history**: Persistent storage and retrieval of chat messages
-- **Dice rolling**: Built-in dice command for gaming purposes
+### コアチャットシステム
+- **サーバー間チャット**: MQTTを介した複数のMinecraftサーバー間での通信
+- **チャンネルシステム**: 複数のチャットチャンネル（グローバル、ワールド、ローカル）をサポート
+- **プライベートメッセージ**: サーバー間でのプレイヤー間直接メッセージング
+- **チャット履歴**: チャットメッセージの永続的な保存と取得
+- **ダイスロール**: ゲーム用の組み込みダイスコマンド
 
-### Channel Management
-- **Multiple channel types**:
-  - **Global**: Messages visible to all players on all servers
-  - **World**: Messages visible to players in the same world
-  - **Local**: Messages visible to players within a defined range
-- **Channel configuration**: Customizable enter/leave messages, welcome/goodbye messages
-- **Permission-based access**: Control who can join specific channels
-- **Password protection**: Optional password-protected channels
-- **Auto-join**: Automatic channel joining on player login
+### チャンネル管理
+- **複数のチャンネルタイプ**:
+  - **グローバル**: 全サーバーの全プレイヤーに表示されるメッセージ
+  - **ワールド**: 同じワールド内のプレイヤーに表示されるメッセージ
+  - **ローカル**: 定義された範囲内のプレイヤーに表示されるメッセージ
+- **チャンネル設定**: カスタマイズ可能な参加/退出メッセージ、ウェルカム/グッバイメッセージ
+- **権限ベースのアクセス**: 特定のチャンネルに参加できるユーザーを制御
+- **パスワード保護**: オプションのパスワード保護チャンネル
+- **自動参加**: プレイヤーログイン時の自動チャンネル参加
 
-### Advanced Features
-- **Message filtering**: Block unwanted users and content
-- **Admin spy modes**: Monitor private messages and channel activity
-- **Range-based local chat**: Configurable distance for local chat
-- **Database storage**: SQLite or MySQL support for persistent data
-- **Real-time synchronization**: Instant message delivery across servers
+### 高度な機能
+- **メッセージフィルタリング**: 不要なユーザーとコンテンツをブロック
+- **管理者スパイモード**: プライベートメッセージとチャンネル活動の監視
+- **範囲ベースのローカルチャット**: ローカルチャットの設定可能な距離
+- **データベースストレージ**: 永続データのためのSQLiteまたはMySQLサポート
+- **リアルタイム同期**: サーバー間での即座のメッセージ配信
 
-## Dependencies
+## 依存関係
 
-This plugin requires the following dependencies to be installed:
+このプラグインには以下の依存関係のインストールが必要です：
 
-- **EcoFramework** (v0.28 or higher)
-- **EcoMQTT** (v0.10 or higher)
-- **EcoMQTTServerLog** (v0.7 or higher) - Optional
-- **Spigot/Paper** (1.18.2 or compatible)
+- **EcoFramework** (v0.28以上)
+- **EcoMQTT** (v0.10以上)
+- **EcoMQTTServerLog** (v0.7以上) - オプション
+- **Spigot/Paper** (1.18.2以上対応)
 
-## Installation
+## インストール
 
-1. Download the EcoChatMQTT plugin JAR file
-2. Install all required dependencies (EcoFramework, EcoMQTT)
-3. Place the plugin JAR in your server's `plugins/` directory
-4. Configure your MQTT broker settings in the EcoMQTT plugin
-5. Start the server to generate default configuration files
-6. Configure the plugin as described below
-7. Restart the server or use `/ecms reload`
+1. EcoChatMQTTプラグインのJARファイルをダウンロード
+2. 必要な全ての依存関係をインストール（EcoFramework、EcoMQTT）
+3. プラグインJARをサーバーの`plugins/`ディレクトリに配置
+4. EcoMQTTプラグインでMQTTブローカー設定を構成
+5. サーバーを起動してデフォルト設定ファイルを生成
+6. 以下に説明するようにプラグインを設定
+7. サーバーを再起動するか`/ecms reload`を使用
 
-## Configuration
+## 設定
 
-### Main Configuration (config.yml)
+### メイン設定 (config.yml)
 
 ```yaml
-# Enable/disable the plugin
+# プラグインの有効/無効
 Enabled: false
 
-# Date format for timestamps
+# タイムスタンプの日付形式
 DateFormat: "yyyy/MM/dd HH:mm:ss.SSS"
 
-# MQTT topic configuration
+# MQTTトピック設定
 Topic:
   Chat:
     Enable: true
@@ -69,14 +69,14 @@ Topic:
     Format: "{server}/p/{plugin}/config"
     URL: ""
 
-# MQTT Quality of Service settings
+# MQTT Quality of Service設定
 Mqtt:
   Publish:
     QoS: 1
   Subscribe:
     QoS: 1
 
-# Database configuration
+# データベース設定
 Database:
   type: "sqlite"
   name: "chat.db"
@@ -84,7 +84,7 @@ Database:
   user: "user"
   pass: "pass"
 
-# Default channel settings
+# デフォルトチャンネル設定
 ChannelDefault:
   Type: "global"
   EnterMessage: "{PLAYER} join the {NAME} channel."
@@ -97,102 +97,102 @@ ChannelDefault:
   Activate: true
 ```
 
-### Default Channels (default.yml)
+### デフォルトチャンネル (default.yml)
 
-The plugin comes with three predefined channels:
+プラグインには3つの事前定義されたチャンネルが付属しています：
 
-- **G (General)**: Global chat visible to all players on all servers
-- **W (World)**: World-specific chat for players in the same world
-- **L (Local)**: Local chat for players within a specific range
+- **G (General)**: 全サーバーの全プレイヤーに表示されるグローバルチャット
+- **W (World)**: 同じワールドのプレイヤー向けのワールド固有チャット
+- **L (Local)**: 特定の範囲内のプレイヤー向けのローカルチャット
 
-## Commands
+## コマンド
 
-### Basic Chat Commands
+### 基本チャットコマンド
 
-| Command | Description | Permission |
+| コマンド | 説明 | 権限 |
 |---------|-------------|------------|
-| `/join <channel>` | Join a chat channel | `ecochatmqtt.chat.join` |
-| `/leave <channel>` | Leave a chat channel | `ecochatmqtt.chat.leave` |
-| `/passjoin <channel> <password>` | Join password-protected channel | `ecochatmqtt.chat.passjoin` |
-| `/pm <player> <message>` | Send private message | `ecochatmqtt.chat.pm` |
-| `/rs <message>` | Reply to last private message | `ecochatmqtt.chat.rs` |
-| `/cc <channel>` | Switch active channel | `ecochatmqtt.chat.cc` |
-| `/ecc` | Show current channel info | `ecochatmqtt.chat.ecc` |
+| `/join <channel>` | チャットチャンネルに参加 | `ecochatmqtt.chat.join` |
+| `/leave <channel>` | チャットチャンネルから退出 | `ecochatmqtt.chat.leave` |
+| `/passjoin <channel> <password>` | パスワード保護チャンネルに参加 | `ecochatmqtt.chat.passjoin` |
+| `/pm <player> <message>` | プライベートメッセージを送信 | `ecochatmqtt.chat.pm` |
+| `/rs <message>` | 最後のプライベートメッセージに返信 | `ecochatmqtt.chat.rs` |
+| `/cc <channel>` | アクティブチャンネルを切り替え | `ecochatmqtt.chat.cc` |
+| `/ecc` | 現在のチャンネル情報を表示 | `ecochatmqtt.chat.ecc` |
 
-### Channel Management
+### チャンネル管理
 
-| Command | Description | Permission |
+| コマンド | 説明 | 権限 |
 |---------|-------------|------------|
-| `/channel name <channel> <name>` | Set channel display name | `ecochatmqtt.chat.channel.name` |
-| `/channel type <channel> <type>` | Set channel type | `ecochatmqtt.chat.channel.type` |
-| `/channel color <channel> <color>` | Set channel color | `ecochatmqtt.chat.channel.color` |
-| `/channel list` | List available channels | `ecochatmqtt.chat.channel.list` |
-| `/channel welcome <channel> <message>` | Set welcome message | `ecochatmqtt.chat.channel.welcome` |
-| `/channel goodbye <channel> <message>` | Set goodbye message | `ecochatmqtt.chat.channel.goodbye` |
-| `/channel owner <channel> <player>` | Set channel owner | `ecochatmqtt.chat.channel.owner` |
-| `/channel perm <channel> <permission>` | Set channel permissions | `ecochatmqtt.chat.channel.perm` |
+| `/channel name <channel> <name>` | チャンネル表示名を設定 | `ecochatmqtt.chat.channel.name` |
+| `/channel type <channel> <type>` | チャンネルタイプを設定 | `ecochatmqtt.chat.channel.type` |
+| `/channel color <channel> <color>` | チャンネルカラーを設定 | `ecochatmqtt.chat.channel.color` |
+| `/channel list` | 利用可能なチャンネルをリスト表示 | `ecochatmqtt.chat.channel.list` |
+| `/channel welcome <channel> <message>` | ウェルカムメッセージを設定 | `ecochatmqtt.chat.channel.welcome` |
+| `/channel goodbye <channel> <message>` | グッバイメッセージを設定 | `ecochatmqtt.chat.channel.goodbye` |
+| `/channel owner <channel> <player>` | チャンネル所有者を設定 | `ecochatmqtt.chat.channel.owner` |
+| `/channel perm <channel> <permission>` | チャンネル権限を設定 | `ecochatmqtt.chat.channel.perm` |
 
-### History and Information
+### 履歴と情報
 
-| Command | Description | Permission |
+| コマンド | 説明 | 権限 |
 |---------|-------------|------------|
-| `/history [page/date]` | View chat history | `ecochatmqtt.chat.history` |
-| `/pmhistory <player> [page]` | View private message history | `ecochatmqtt.chat.pmhistory` |
-| `/delete <message_id>` | Delete a message | `ecochatmqtt.chat.delete` |
-| `/dice [sides]` | Roll dice | `ecochatmqtt.chat.dice` |
+| `/history [page/date]` | チャット履歴を表示 | `ecochatmqtt.chat.history` |
+| `/pmhistory <player> [page]` | プライベートメッセージ履歴を表示 | `ecochatmqtt.chat.pmhistory` |
+| `/delete <message_id>` | メッセージを削除 | `ecochatmqtt.chat.delete` |
+| `/dice [sides]` | ダイスを振る | `ecochatmqtt.chat.dice` |
 
-### Configuration Commands
+### 設定コマンド
 
-| Command | Description | Permission |
+| コマンド | 説明 | 権限 |
 |---------|-------------|------------|
-| `/ecms reload` | Reload plugin configuration | `ecochatmqtt.reload` |
-| `/conf channel <settings>` | Configure channel settings | `ecochatmqtt.chat.conf.channel` |
-| `/conf player <settings>` | Configure player settings | `ecochatmqtt.chat.conf.player` |
-| `/conf flag <settings>` | Configure flag settings | `ecochatmqtt.chat.conf.flag` |
+| `/ecms reload` | プラグイン設定をリロード | `ecochatmqtt.reload` |
+| `/conf channel <settings>` | チャンネル設定を構成 | `ecochatmqtt.chat.conf.channel` |
+| `/conf player <settings>` | プレイヤー設定を構成 | `ecochatmqtt.chat.conf.player` |
+| `/conf flag <settings>` | フラグ設定を構成 | `ecochatmqtt.chat.conf.flag` |
 
-### Admin Commands
+### 管理者コマンド
 
-| Command | Description | Permission |
+| コマンド | 説明 | 権限 |
 |---------|-------------|------------|
-| `/add <player> <channel>` | Add player to channel | `ecochatmqtt.chat.add` |
-| `/set <player> <channel>` | Set player's active channel | `ecochatmqtt.chat.set` |
+| `/add <player> <channel>` | プレイヤーをチャンネルに追加 | `ecochatmqtt.chat.add` |
+| `/set <player> <channel>` | プレイヤーのアクティブチャンネルを設定 | `ecochatmqtt.chat.set` |
 
-## MQTT Communication
+## MQTT通信
 
-The plugin uses MQTT topics for cross-server communication:
+プラグインはサーバー間通信にMQTTトピックを使用します：
 
-- **Chat Topic**: `{server}/p/{plugin}/chat` - Used for chat messages
-- **Config Topic**: `{server}/p/{plugin}/config` - Used for configuration updates
+- **チャットトピック**: `{server}/p/{plugin}/chat` - チャットメッセージに使用
+- **設定トピック**: `{server}/p/{plugin}/config` - 設定更新に使用
 
-### Topic Format Variables
-- `{server}`: Server name identifier
-- `{plugin}`: Plugin name (EcoChatMQTT)
+### トピック形式変数
+- `{server}`: サーバー名識別子
+- `{plugin}`: プラグイン名（EcoChatMQTT）
 
-## Channel Types
+## チャンネルタイプ
 
-### Global Channels
-Messages are visible to all players on all connected servers.
+### グローバルチャンネル
+メッセージは接続されている全サーバーの全プレイヤーに表示されます。
 
-### World Channels  
-Messages are only visible to players in the same world.
+### ワールドチャンネル  
+メッセージは同じワールド内のプレイヤーにのみ表示されます。
 
-### Local Channels
-Messages are only visible to players within a configurable distance range.
+### ローカルチャンネル
+メッセージは設定可能な距離範囲内のプレイヤーにのみ表示されます。
 
-## Database
+## データベース
 
-The plugin supports both SQLite and MySQL databases for storing:
-- Chat messages and history
-- Channel configurations
-- User preferences
-- Private message logs
-- Channel memberships
+プラグインは以下の保存用にSQLiteとMySQLの両方のデータベースをサポートします：
+- チャットメッセージと履歴
+- チャンネル設定
+- ユーザー設定
+- プライベートメッセージログ
+- チャンネルメンバーシップ
 
-### SQLite (Default)
-No additional setup required. Database file is created automatically.
+### SQLite（デフォルト）
+追加のセットアップは不要です。データベースファイルは自動的に作成されます。
 
 ### MySQL
-Configure database connection details in `config.yml`:
+`config.yml`でデータベース接続詳細を設定：
 ```yaml
 Database:
   type: "mysql"
@@ -202,33 +202,33 @@ Database:
   pass: "password"
 ```
 
-## Permissions
+## 権限
 
-### Basic Permissions
-- `ecochatmqtt.chat.*` - Access to all chat commands
-- `ecochatmqtt.chat.join` - Join channels
-- `ecochatmqtt.chat.leave` - Leave channels
-- `ecochatmqtt.chat.pm` - Send private messages
-- `ecochatmqtt.chat.history` - View chat history
+### 基本権限
+- `ecochatmqtt.chat.*` - 全チャットコマンドへのアクセス
+- `ecochatmqtt.chat.join` - チャンネル参加
+- `ecochatmqtt.chat.leave` - チャンネル退出
+- `ecochatmqtt.chat.pm` - プライベートメッセージ送信
+- `ecochatmqtt.chat.history` - チャット履歴表示
 
-### Admin Permissions
-- `ecochatmqtt.reload` - Reload plugin configuration
-- `ecochatmqtt.chat.channel.*` - Full channel management
-- `ecochatmqtt.chat.conf.*` - Configuration access
-- `ecochatmqtt.chat.add` - Add players to channels
+### 管理者権限
+- `ecochatmqtt.reload` - プラグイン設定リロード
+- `ecochatmqtt.chat.channel.*` - 完全なチャンネル管理
+- `ecochatmqtt.chat.conf.*` - 設定アクセス
+- `ecochatmqtt.chat.add` - プレイヤーをチャンネルに追加
 
-## License
+## ライセンス
 
-This project is licensed under the GNU Lesser General Public License v3.0 (LGPL-3.0). See the [LICENSE](LICENSE) file for details.
+このプロジェクトは GNU Lesser General Public License v3.0 (LGPL-3.0) の下でライセンスされています。詳細については [LICENSE](LICENSE) ファイルを参照してください。
 
-## Author
+## 作者
 
-**ecolight** - Plugin developer and maintainer
+**ecolight** - プラグイン開発者・メンテナー
 
-## Version
+## バージョン
 
-Current version: 0.7
+現在のバージョン: 0.7
 
-## Support
+## サポート
 
-For issues, feature requests, or support, please refer to the project repository or contact the plugin author.
+問題、機能リクエスト、またはサポートについては、プロジェクトリポジトリを参照するか、プラグイン作者に連絡してください。
